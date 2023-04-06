@@ -19,4 +19,18 @@ Here, I replaced `<admin-username>` with `mgrover`
 curl -L https://tljh.jupyter.org/bootstrap.py | sudo -E python3 - --admin <admin-username>
 ```
 
-This was intalled on `crocus-server-04`
+This was intalled on `crocus-server-05`
+
+### Make sure the right ports are enabled
+
+```bash
+sudo tljh-config set http.port 8080
+sudo tljh-config set https.port 8443
+sudo tljh-config reload proxy
+```
+
+### Forward the ports on your local machine
+
+```bash
+ssh -v -N USERNAME@crocus-server-05.cels.anl.gov -L 8080:crocus-server-05.cels.anl.gov:8080
+```
